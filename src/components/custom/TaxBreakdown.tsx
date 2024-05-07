@@ -1,7 +1,10 @@
 import { TaxBracket } from "@/types/TaxBracket";
 import TaxBracketTable from "./TaxBracketTable";
 import { APIError } from "@/classes/APIError";
-import ERROR_MAPPING from "@/data/error_mapping.json";
+import error_mapping from "@/data/error_mapping.json";
+import formatter from "@/utils/formatter";
+
+const ERROR_MAPPING = error_mapping as Record<string, string>;
 
 type Props = {
   taxes: number;
@@ -10,27 +13,23 @@ type Props = {
   taxBrackets: TaxBracket[];
 };
 
-const error_mapping = ERROR_MAPPING as Record<string, string>;
-
 export function TaxBreakdown(props: Props) {
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h2>Taxes Owed</h2>
-        <h3>{props.taxes}</h3>
+    <div className="flex flex-col">
+      <div className="flex flex-col my-10">
+        <h2 className="text-sm">Taxes Owed</h2>
+        <p className="text-4xl font-bold">{formatter.format(props.taxes)}</p>
       </div>
-      <h2>Tax Brackets</h2>
-
-      {props.error ? <div>{error_mapping[props.error.message]}</div> : null}
-
-      {props.fetching ? <div>Fetching...</div> : <TaxBracketTable taxBrackets={props.taxBrackets} />}
+      <div className="flex flex-col w-full">
+        <h2 className="text-base">Tax Brackets</h2>
+        {props.error ? (
+          <div>{ERROR_MAPPING[props.error.errorCode]}</div>
+        ) : props.fetching ? (
+          <div>Fetching...</div>
+        ) : (
+          <TaxBracketTable taxBrackets={props.taxBrackets} />
+        )}
+      </div>
     </div>
   );
 }

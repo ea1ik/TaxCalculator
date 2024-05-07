@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { TaxBracket } from "@/types/TaxBracket";
+import formatter from "@/utils/formatter";
 
 type Props = {
   taxBrackets: TaxBracket[];
@@ -18,8 +19,8 @@ export default function TaxBracketTable({ taxBrackets }: Props) {
       <TableBody>
         {taxBrackets.map(({ min, max, rate }) => (
           <TableRow key={min}>
-            <TableCell>{min}</TableCell>
-            <TableCell>{max}</TableCell>
+            <TableCell>{formatter.format(min)}</TableCell>
+            <TableCell>{max ? formatter.format(max) : "-"}</TableCell>
             <TableCell>{rate}</TableCell>
           </TableRow>
         ))}
