@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "start-server": "docker run --init -p 5001:5001 -it ptsdocker16/interview-test-server"
+    "start-server": "docker run --init -p 5001:5001 -it ptsdocker16/interview-test-server",
+    "test-utils": "vitest util"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
