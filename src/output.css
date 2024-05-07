@@ -643,6 +643,10 @@ input[type="number"]::-webkit-inner-spin-button,
   display: table;
 }
 
+.contents {
+  display: contents;
+}
+
 .h-10 {
   height: 2.5rem;
 }
