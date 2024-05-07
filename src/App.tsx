@@ -6,6 +6,7 @@ import ERROR_MAPPING from "./data/error_mapping.json";
 import { APIError } from "./classes/APIError";
 import useTaxBrackets from "./hooks/useTaxBrackets";
 import { Button } from "./components/ui/button";
+import TaxBracketTable from "./components/custom/TaxBracketTable";
 
 const error_mapping = ERROR_MAPPING as Record<string, string>;
 
@@ -55,7 +56,7 @@ function App() {
 
   return (
     <div>
-      <h1>Calculate Taxes</h1>
+      <h1 className="font-thin">Calculate Taxes</h1>
       <div style={{ display: "flex", flexDirection: "row", width: 1000 }}>
         <section style={{ width: 400, justifyContent: "center" }}>
           <form onSubmit={onSubmit}>
@@ -83,7 +84,7 @@ function App() {
               </label>
               <input style={{ flex: 2 }} id="annualIncome" name="annualIncome" />
             </div>
-            <Button>Calculate</Button>
+            <Button variant="default">Calculate</Button>
           </form>
         </section>
         <section style={{ width: 400, height: 700, borderWidth: 1, borderColor: "black" }}>
@@ -107,14 +108,8 @@ function App() {
                 <h3>{taxes}</h3>
               </div>
               <h2>Tax Brackets</h2>
-              <ul>
-                {taxBrackets?.map(({ min, max, rate }) => (
-                  <li key={min}>
-                    {min} - {max}: {rate}
-                  </li>
-                ))}
-              </ul>
-              {error && <div style={{ color: "red" }}>{error}</div>}
+
+              <TaxBracketTable taxBrackets={taxBrackets ?? []} />
             </div>
           )}
         </section>
