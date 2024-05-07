@@ -20,7 +20,7 @@ export function TaxBreakdown(props: Props) {
         <h2 className="text-sm">Taxes Owed</h2>
         <p className="text-4xl font-bold">{formatter.format(props.taxes)}</p>
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full h-96">
         <h2 className="text-base">Tax Brackets</h2>
         {props.error ? (
           <div>{ERROR_MAPPING[props.error.errorCode]}</div>
