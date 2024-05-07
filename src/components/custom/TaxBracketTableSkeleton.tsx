@@ -3,9 +3,9 @@ import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function TaxBracketTableSkeleton() {
   return (
-    <div className="flex flex-col w-96">
+    <div className="flex flex-col w-96" data-testid="tax-bracket-table-skeleton">
       <Table>
-        <TableHeader>
+        <TableHeader data-testid="tax-bracket-table-skeleton-header">
           <TableRow>
             <TableHead>Min</TableHead>
             <TableHead>Max</TableHead>
@@ -14,11 +14,11 @@ export default function TaxBracketTableSkeleton() {
         </TableHeader>
       </Table>
       <div className="flex flex-col gap-1.5">
-        <Skeleton className="h-12" />
-        <Skeleton className="h-12" />
-        <Skeleton className="h-12" />
-        <Skeleton className="h-12" />
-        <Skeleton className="h-12" />
+        <Skeleton data-testid="tax-bracket-skeleton" className="h-12" />
+        <Skeleton data-testid="tax-bracket-skeleton" className="h-12" />
+        <Skeleton data-testid="tax-bracket-skeleton" className="h-12" />
+        <Skeleton data-testid="tax-bracket-skeleton" className="h-12" />
+        <Skeleton data-testid="tax-bracket-skeleton" className="h-12" />
       </div>
     </div>
   );
