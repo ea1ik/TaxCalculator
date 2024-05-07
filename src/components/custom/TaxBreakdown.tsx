@@ -3,6 +3,7 @@ import TaxBracketTable from "./TaxBracketTable";
 import { APIError } from "@/classes/APIError";
 import error_mapping from "@/data/error_mapping.json";
 import formatter from "@/utils/formatter";
+import TaxBracketTableSkeleton from "./TaxBracketTableSkeleton";
 
 const ERROR_MAPPING = error_mapping as Record<string, string>;
 
@@ -25,7 +26,7 @@ export function TaxBreakdown(props: Props) {
         {props.error ? (
           <div>{ERROR_MAPPING[props.error.errorCode]}</div>
         ) : props.fetching ? (
-          <div>Fetching...</div>
+          <TaxBracketTableSkeleton />
         ) : (
           <TaxBracketTable taxBrackets={props.taxBrackets} />
         )}
