@@ -14,6 +14,7 @@ const formSchema = z.object({
 
 type Props = {
   onSubmit: (data: z.infer<typeof formSchema>) => void;
+  onYearChange?: (year: string) => void;
 };
 
 export function AnnualTaxesForm(props: Props) {
@@ -47,18 +48,28 @@ export function AnnualTaxesForm(props: Props) {
           control={form.control}
           name="year"
           render={({ field }) => (
-            <Select name={field.name} value={field.value} onValueChange={field.onChange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {TAX_YEARS.map((item) => (
-                  <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
-                    {item.year}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <FormItem
+              onChange={(e) => {
+                field.onChange((e.target as HTMLInputElement).value);
+                props.onYearChange?.((e.target as HTMLInputElement).value);
+              }}
+            >
+              <FormLabel>Annual Tax Year</FormLabel>
+              <FormControl>
+                <Select defaultValue={form.formState.defaultValues?.year}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {TAX_YEARS.map((item) => (
+                      <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
+                        {item.year}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+            </FormItem>
           )}
         />
         <Button type="submit">Calculate Taxes</Button>

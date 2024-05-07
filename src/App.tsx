@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="flex justify-center items-center flex-row gap-36 p-20">
       <section className="w-96 justify-center">
-        <AnnualTaxesForm onSubmit={onSubmit} />
+        <AnnualTaxesForm onYearChange={setYear} onSubmit={onSubmit} />
       </section>
       <section className="w-96">
         <TaxBreakdown error={error} fetching={fetching} taxes={taxes} taxBrackets={taxBrackets ?? []} />
