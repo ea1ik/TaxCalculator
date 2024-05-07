@@ -8,8 +8,8 @@ type Props = {
 
 export default function TaxBracketTable({ taxBrackets }: Props) {
   return (
-    <Table className="w-96">
-      <TableHeader>
+    <Table className="w-96" data-testid="tax-bracket-table">
+      <TableHeader data-testid="tax-bracket-header">
         <TableRow>
           <TableHead>Min</TableHead>
           <TableHead>Max</TableHead>
@@ -18,7 +18,7 @@ export default function TaxBracketTable({ taxBrackets }: Props) {
       </TableHeader>
       <TableBody>
         {taxBrackets.map(({ min, max, rate }) => (
-          <TableRow key={min}>
+          <TableRow key={min} data-testid="tax-bracket-row">
             <TableCell>{formatter.format(min)}</TableCell>
             <TableCell>{max ? formatter.format(max) : "-"}</TableCell>
             <TableCell>{rate}</TableCell>
