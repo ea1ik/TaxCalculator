@@ -1,10 +1,8 @@
-{
-  "tax_years": [
-    { "year": 2019, "disabled": false },
-    { "year": 2020, "disabled": false },
-    { "year": 2021, "disabled": false },
-    { "year": 2022, "disabled": false },
-    { "year": 2023, "disabled": true },
-    { "year": 2024, "disabled": true }
-  ]
-}
+[
+  { "year": "2019", "disabled": false },
+  { "year": "2020", "disabled": false },
+  { "year": "2021", "disabled": false },
+  { "year": "2022", "disabled": false },
+  { "year": "2023", "disabled": true },
+  { "year": "2024", "disabled": true }
+]

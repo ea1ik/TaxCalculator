@@ -4,7 +4,7 @@ import getBrackets from "../api/getBrackets";
 import getBracketsByYear from "../api/getBracketsByYear";
 import { APIError } from "../classes/APIError";
 
-const useTaxBrackets = (year?: number) => {
+const useTaxBrackets = (year?: string) => {
   const {
     data: taxBrackets,
     error,
