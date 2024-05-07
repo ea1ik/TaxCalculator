@@ -8,7 +8,7 @@ type Props = {
 
 export default function TaxBracketTable({ taxBrackets }: Props) {
   return (
-    <Table>
+    <Table className="w-96">
       <TableHeader>
         <TableRow>
           <TableHead>Min</TableHead>

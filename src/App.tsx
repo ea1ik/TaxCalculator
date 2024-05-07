@@ -17,13 +17,16 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center items-center flex-row gap-36 p-20">
-      <section className="w-96 justify-center">
-        <AnnualTaxesForm onYearChange={setYear} onSubmit={onSubmit} />
-      </section>
-      <section className="w-96">
-        <TaxBreakdown error={error} fetching={fetching} taxes={taxes} taxBrackets={taxBrackets ?? []} />
-      </section>
+    <div className="flex justify-center items-center flex-col p-20">
+      <h1 className="text-4xl font-extrabold my-10">Tax Calculator</h1>
+      <div className="flex flex-row gap-36 px-20">
+        <section className="flex items-center justify-center min-w-96">
+          <AnnualTaxesForm onYearChange={setYear} onSubmit={onSubmit} />
+        </section>
+        <section className="flex items-center justify-center">
+          <TaxBreakdown error={error} fetching={fetching} taxes={taxes} taxBrackets={taxBrackets ?? []} />
+        </section>
+      </div>
     </div>
   );
 }

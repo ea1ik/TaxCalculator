@@ -8,7 +8,9 @@ import { z } from "zod";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const formSchema = z.object({
-  annualIncome: z.number().nonnegative(),
+  annualIncome: z.coerce
+    .number({ message: "Income must be a number" })
+    .nonnegative({ message: "Income must be positive" }),
   year: z.enum(TAX_YEARS.map((item) => item.year) as [string]),
 });
 
@@ -20,9 +22,7 @@ type Props = {
 export function AnnualTaxesForm(props: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      year: "2022",
-    },
+    defaultValues: { year: "2022", annualIncome: 0 },
   });
 
   return (
@@ -31,12 +31,13 @@ export function AnnualTaxesForm(props: Props) {
         <FormField
           control={form.control}
           name="annualIncome"
+          rules={{ required: "Annual income is required" }}
           render={({ field }) => {
             return (
-              <FormItem onChange={(e) => field.onChange(parseInt((e.target as HTMLInputElement).value))}>
+              <FormItem className="w-full" onChange={field.onChange}>
                 <FormLabel>Annual Income</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormDescription>Your total income for the year</FormDescription>
                 <FormMessage />
@@ -55,24 +56,27 @@ export function AnnualTaxesForm(props: Props) {
               }}
             >
               <FormLabel>Annual Tax Year</FormLabel>
-              <FormControl>
-                <Select defaultValue={form.formState.defaultValues?.year}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue />
+              <Select defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Year" />
                   </SelectTrigger>
-                  <SelectContent>
-                    {TAX_YEARS.map((item) => (
-                      <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
-                        {item.year}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
+                </FormControl>
+                <SelectContent>
+                  {TAX_YEARS.map((item) => (
+                    <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
+                      {item.year}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormDescription>The year of taxation</FormDescription>
             </FormItem>
           )}
         />
-        <Button type="submit">Calculate Taxes</Button>
+        <Button className="w-full" type="submit">
+          Calculate Taxes
+        </Button>
       </form>
     </Form>
   );
