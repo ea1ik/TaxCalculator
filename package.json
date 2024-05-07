@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "start-server": "docker run --init -p 5001:5001 -it ptsdocker16/interview-test-server",
-    "test-utils": "vitest util"
+    "test-utils": "vitest util",
+    "test-components": "vitest component --environment jsdom"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -26,9 +27,12 @@
     "zod": "^3.23.6"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^15.0.7",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.12.10",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
@@ -36,6 +40,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "jsdom": "^24.0.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
