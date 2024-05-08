@@ -8,7 +8,7 @@ type Props = {
 
 export default function TaxBracketTable({ taxBrackets }: Props) {
   return (
-    <div className="w-96 min-h-80">
+    <div className="min-h-80">
       {taxBrackets.length === 0 ? (
         <p>Select a year to view tax brackets</p>
       ) : (

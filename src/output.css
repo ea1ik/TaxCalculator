@@ -631,6 +631,10 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-top: 1rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -679,12 +683,32 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 1px;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
 
 .min-h-80 {
   min-height: 20rem;
+}
+
+.min-h-96 {
+  min-height: 24rem;
+}
+
+.min-h-\[400px\] {
+  min-height: 400px;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-10 {
@@ -727,6 +751,10 @@ input[type="number"]::-webkit-inner-spin-button,
   min-width: var(--radix-select-trigger-width);
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .caption-bottom {
   caption-side: bottom;
 }
@@ -759,8 +787,20 @@ input[type="number"]::-webkit-inner-spin-button,
   flex-direction: column;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -781,6 +821,14 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .gap-36 {
   gap: 9rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -859,6 +907,16 @@ input[type="number"]::-webkit-inner-spin-button,
   background-color: hsl(var(--secondary));
 }
 
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
+}
+
+.bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -869,6 +927,10 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
 }
 
 .px-20 {
@@ -912,6 +974,14 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pl-10 {
+  padding-left: 2.5rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .text-left {
@@ -1233,6 +1303,46 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .data-\[side\=top\]\:slide-in-from-bottom-2[data-side=top] {
   --tw-enter-translate-y: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:flex-col {
+    flex-direction: column;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
+  }
+
+  .md\:p-10 {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .lg\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .lg\:justify-center {
+    justify-content: center;
+  }
 }
 
 .\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role=checkbox]) {

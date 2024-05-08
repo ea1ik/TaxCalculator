@@ -27,13 +27,13 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col p-20">
+    <div className="flex justify-center items-center flex-col">
       <h1 className="text-4xl font-extrabold my-10">Tax Calculator</h1>
-      <div className="flex flex-row gap-36 px-20">
-        <section className="flex items-center justify-center min-w-96">
+      <div className="flex w-full items-center gap-10 flex-col md:flex-row">
+        <section className="flex justify-center lg:justify-end flex-1">
           <AnnualTaxesForm onYearChange={setYear} onSubmit={onSubmit} />
         </section>
-        <section className="flex items-center justify-center">
+        <section className="flex justify-center lg:justify-start flex-1">
           <TaxBreakdown error={error} fetching={fetching} taxes={taxes} taxBrackets={taxBrackets ?? []} />
         </section>
       </div>
