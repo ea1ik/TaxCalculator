@@ -26,7 +26,7 @@ export function AnnualTaxesForm(props: Props) {
   });
 
   return (
-    <Form {...form}>
+    <Form {...form} data-testid="annual-taxes-form">
       <form onSubmit={form.handleSubmit(props.onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -36,11 +36,11 @@ export function AnnualTaxesForm(props: Props) {
             return (
               <FormItem className="w-full" onChange={field.onChange}>
                 <FormLabel>Annual Income</FormLabel>
-                <FormControl>
+                <FormControl data-testid="annual-taxes-form-annual-income">
                   <Input type="number" {...field} />
                 </FormControl>
                 <FormDescription>Your total income for the year</FormDescription>
-                <FormMessage />
+                <FormMessage data-testid="annual-taxes-form-annual-income-message" />
               </FormItem>
             );
           }}
@@ -57,7 +57,7 @@ export function AnnualTaxesForm(props: Props) {
             >
               <FormLabel>Annual Tax Year</FormLabel>
               <Select defaultValue={field.value}>
-                <FormControl>
+                <FormControl data-testid="annual-taxes-form-year">
                   <SelectTrigger>
                     <SelectValue placeholder="Year" />
                   </SelectTrigger>
@@ -74,7 +74,7 @@ export function AnnualTaxesForm(props: Props) {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
+        <Button data-testid="annual-taxes-form-submit-btn" className="w-full" type="submit">
           Calculate Taxes
         </Button>
       </form>
