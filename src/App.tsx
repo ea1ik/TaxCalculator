@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import calculateTaxes from "./utils/calculateTaxes";
 import useTaxBrackets from "./hooks/useTaxBrackets";
 import { AnnualTaxesForm } from "./components/custom/AnnualTaxesForm";
@@ -6,11 +6,21 @@ import { TaxBreakdown } from "./components/custom/TaxBreakdown";
 
 function App() {
   const [taxes, setTaxes] = useState<number>(0);
-  const [year, setYear] = useState<string>("2022");
+  const [annualIncome, setAnnualIncome] = useState<number>(0);
+  const [year, setYear] = useState<string | null>(null);
   const { taxBrackets, loading: fetching, error } = useTaxBrackets(year);
+
+  useEffect(() => {
+    if (annualIncome) {
+      if (!taxBrackets) return;
+      const taxes = calculateTaxes(annualIncome, taxBrackets);
+      setTaxes(taxes);
+    }
+  }, [taxBrackets, annualIncome]);
 
   const onSubmit = (data: { annualIncome: number; year: string }) => {
     if (!taxBrackets) return;
+    setAnnualIncome(data.annualIncome);
     const taxes = calculateTaxes(data.annualIncome, taxBrackets);
     setTaxes(taxes);
     setYear(data.year);

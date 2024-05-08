@@ -4,6 +4,7 @@ import { APIError } from "@/classes/APIError";
 import error_mapping from "@/data/error_mapping.json";
 import formatter from "@/utils/formatter";
 import TaxBracketTableSkeleton from "./TaxBracketTableSkeleton";
+import { Skeleton } from "../ui/skeleton";
 
 const ERROR_MAPPING = error_mapping as Record<string, string>;
 
@@ -19,9 +20,13 @@ export function TaxBreakdown(props: Props) {
     <div className="flex flex-col">
       <div className="flex flex-col mb-6">
         <h2 className="text-sm">Taxes Owed</h2>
-        <p className="text-4xl font-bold" data-testid="tax-breakdown-taxes">
-          {formatter.format(props.taxes)}
-        </p>
+        {props.fetching ? (
+          <Skeleton className="w-40 h-12" />
+        ) : (
+          <p className="text-4xl font-bold" data-testid="tax-breakdown-taxes">
+            {formatter.format(props.taxes)}
+          </p>
+        )}
       </div>
       <div className="flex flex-col">
         <h2 className="text-base">Tax Brackets</h2>

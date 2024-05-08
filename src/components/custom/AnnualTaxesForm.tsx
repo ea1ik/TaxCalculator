@@ -16,28 +16,25 @@ const formSchema = z.object({
 
 type Props = {
   onSubmit: (data: z.infer<typeof formSchema>) => void;
-  onYearChange?: (year: string) => void;
+  onYearChange: (year: string) => void;
 };
 
 export function AnnualTaxesForm(props: Props) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { year: "2022", annualIncome: 0 },
-  });
+  const form = useForm<z.infer<typeof formSchema>>({ resolver: zodResolver(formSchema) });
 
   return (
-    <Form {...form} data-testid="annual-taxes-form">
-      <form onSubmit={form.handleSubmit(props.onSubmit)} className="space-y-8">
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(props.onSubmit)} className="space-y-8" data-testid="annual-taxes-form">
         <FormField
           control={form.control}
           name="annualIncome"
           rules={{ required: "Annual income is required" }}
           render={({ field }) => {
             return (
-              <FormItem className="w-full" onChange={field.onChange}>
+              <FormItem className="w-full">
                 <FormLabel>Annual Income</FormLabel>
                 <FormControl data-testid="annual-taxes-form-annual-income">
-                  <Input type="number" {...field} />
+                  <Input type="number" {...field} onChange={field.onChange} />
                 </FormControl>
                 <FormDescription>Your total income for the year</FormDescription>
                 <FormMessage data-testid="annual-taxes-form-annual-income-message" />
@@ -49,22 +46,22 @@ export function AnnualTaxesForm(props: Props) {
           control={form.control}
           name="year"
           render={({ field }) => (
-            <FormItem
-              onChange={(e) => {
-                field.onChange((e.target as HTMLInputElement).value);
-                props.onYearChange?.((e.target as HTMLInputElement).value);
-              }}
-            >
+            <FormItem onChange={field.onChange}>
               <FormLabel>Annual Tax Year</FormLabel>
-              <Select defaultValue={field.value}>
+              <Select defaultValue={field.value} onValueChange={props.onYearChange}>
                 <FormControl data-testid="annual-taxes-form-year">
                   <SelectTrigger>
-                    <SelectValue placeholder="Year" />
+                    <SelectValue placeholder="Year" defaultValue={field.value} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   {TAX_YEARS.map((item) => (
-                    <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
+                    <SelectItem
+                      key={item.year}
+                      value={item.year}
+                      disabled={item.disabled}
+                      // data-testid="annual-taxes-form-year-option" useless
+                    >
                       {item.year}
                     </SelectItem>
                   ))}
@@ -74,7 +71,12 @@ export function AnnualTaxesForm(props: Props) {
             </FormItem>
           )}
         />
-        <Button data-testid="annual-taxes-form-submit-btn" className="w-full" type="submit">
+        <Button
+          data-testid="annual-taxes-form-submit-btn"
+          className="w-full"
+          type="submit"
+          disabled={!form.formState.touchedFields.annualIncome && !form.formState.touchedFields.year}
+        >
           Calculate Taxes
         </Button>
       </form>
