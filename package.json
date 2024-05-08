@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "start-server": "docker run --init -p 5001:5001 -it ptsdocker16/interview-test-server",
+    "test": "vitest --environment jsdom",
     "test-utils": "vitest util",
     "test-components": "vitest component --environment jsdom"
   },

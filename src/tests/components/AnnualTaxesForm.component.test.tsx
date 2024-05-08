@@ -36,7 +36,7 @@ describe("AnnualTaxesForm component", () => {
     const form = screen.getByTestId("annual-taxes-form");
     const calculateButton = screen.getByTestId("annual-taxes-form-submit-btn");
 
-    expect(form).toHaveFormValues({ annualIncome: null, year: undefined });
+    expect(form).toHaveFormValues({ annualIncome: 0, year: undefined });
     await user.type(annualIncomeField, "50000");
     expect(form).toHaveFormValues({ annualIncome: 50000 });
 
@@ -84,6 +84,7 @@ describe("AnnualTaxesForm component", () => {
     const calculateButton = screen.getByTestId("annual-taxes-form-submit-btn");
     const form = screen.getByTestId("annual-taxes-form");
 
+    await user.clear(annualIncomeField);
     await user.type(annualIncomeField, "abc");
     expect(form).toHaveFormValues({ annualIncome: null });
 
@@ -98,6 +99,7 @@ describe("AnnualTaxesForm component", () => {
     const calculateButton = screen.getByTestId("annual-taxes-form-submit-btn");
     const form = screen.getByTestId("annual-taxes-form");
 
+    await user.clear(annualIncomeField);
     await user.type(annualIncomeField, "-50000");
     expect(form).toHaveFormValues({ annualIncome: -50000 });
 

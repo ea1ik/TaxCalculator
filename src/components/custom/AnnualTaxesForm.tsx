@@ -20,7 +20,12 @@ type Props = {
 };
 
 export function AnnualTaxesForm(props: Props) {
-  const form = useForm<z.infer<typeof formSchema>>({ resolver: zodResolver(formSchema) });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      annualIncome: 0,
+    },
+  });
 
   return (
     <Form {...form}>
