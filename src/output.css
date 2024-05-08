@@ -643,14 +643,6 @@ input[type="number"]::-webkit-inner-spin-button,
   display: table;
 }
 
-.contents {
-  display: contents;
-}
-
-.hidden {
-  display: none;
-}
-
 .h-10 {
   height: 2.5rem;
 }
@@ -687,12 +679,12 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 1px;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .max-h-96 {
   max-height: 24rem;
+}
+
+.min-h-80 {
+  min-height: 20rem;
 }
 
 .w-10 {
@@ -711,24 +703,16 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 1rem;
 }
 
+.w-40 {
+  width: 10rem;
+}
+
 .w-96 {
   width: 24rem;
 }
 
-.w-\[180px\] {
-  width: 180px;
-}
-
 .w-full {
   width: 100%;
-}
-
-.w-32 {
-  width: 8rem;
-}
-
-.w-40 {
-  width: 10rem;
 }
 
 .min-w-96 {

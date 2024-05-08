@@ -3,15 +3,15 @@ import TaxBracketTable from "@/components/custom/TaxBracketTable";
 import { describe, expect, it } from "vitest";
 import formatter from "@/utils/formatter";
 
-const taxBrackets = [
-  { min: 0, max: 50197, rate: 0.15 },
-  { min: 50197, max: 100392, rate: 0.205 },
-  { min: 100392, max: 155625, rate: 0.26 },
-  { min: 155625, max: 221708, rate: 0.29 },
-  { min: 221708, rate: 0.33 },
-];
+describe("Component testing of TaxBracketTable with data", () => {
+  const taxBrackets = [
+    { min: 0, max: 50197, rate: 0.15 },
+    { min: 50197, max: 100392, rate: 0.205 },
+    { min: 100392, max: 155625, rate: 0.26 },
+    { min: 155625, max: 221708, rate: 0.29 },
+    { min: 221708, rate: 0.33 },
+  ];
 
-describe("Component testing of TaxBracketTable", () => {
   beforeEach(() => {
     render(<TaxBracketTable taxBrackets={taxBrackets} />);
   });
@@ -59,5 +59,16 @@ describe("Component testing of TaxBracketTable", () => {
       const cells = row.querySelectorAll("td");
       expect(cells).toHaveLength(3);
     }
+  });
+});
+
+describe("Component testing of TaxBracketTable with no data", () => {
+  beforeEach(() => {
+    render(<TaxBracketTable taxBrackets={[]} />);
+  });
+
+  it("renders the table with no data message", async () => {
+    const table = screen.getByText("Select a year to view tax brackets");
+    expect(table).toBeInTheDocument();
   });
 });

@@ -29,7 +29,7 @@ export function TaxBreakdown(props: Props) {
         )}
       </div>
       <div className="flex flex-col">
-        <h2 className="text-base">Tax Brackets</h2>
+        <h2 className="text-sm">Tax Brackets</h2>
         {props.error ? (
           <p data-testid="tax-breakdown-error">{ERROR_MAPPING[props.error.errorCode]}</p>
         ) : props.fetching ? (
