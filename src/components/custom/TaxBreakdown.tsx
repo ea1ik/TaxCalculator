@@ -19,12 +19,14 @@ export function TaxBreakdown(props: Props) {
     <div className="flex flex-col">
       <div className="flex flex-col mb-6">
         <h2 className="text-sm">Taxes Owed</h2>
-        <p className="text-4xl font-bold">{formatter.format(props.taxes)}</p>
+        <p className="text-4xl font-bold" data-testid="tax-breakdown-taxes">
+          {formatter.format(props.taxes)}
+        </p>
       </div>
       <div className="flex flex-col">
         <h2 className="text-base">Tax Brackets</h2>
         {props.error ? (
-          <div>{ERROR_MAPPING[props.error.errorCode]}</div>
+          <p data-testid="tax-breakdown-error">{ERROR_MAPPING[props.error.errorCode]}</p>
         ) : props.fetching ? (
           <TaxBracketTableSkeleton />
         ) : (
