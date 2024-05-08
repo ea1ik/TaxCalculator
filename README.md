@@ -46,7 +46,7 @@ To get started with the tax calculator project, follow these steps:
 2. Install the necessary dependencies: `npm install`
 3. Run the server: `npm run start-server`
 4. Start the development serverf for the client: `npm run dev`
-5. Open your browser and navigate to `http://localhost:5001` to access the tax calculator.
+5. Open your browser and navigate to `http://localhost:5173` to access the tax calculator.
 
 ## Run Tests
 
