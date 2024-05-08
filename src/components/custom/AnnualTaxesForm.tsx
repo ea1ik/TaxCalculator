@@ -56,12 +56,7 @@ export function AnnualTaxesForm(props: Props) {
                 </FormControl>
                 <SelectContent>
                   {TAX_YEARS.map((item) => (
-                    <SelectItem
-                      key={item.year}
-                      value={item.year}
-                      disabled={item.disabled}
-                      // data-testid="annual-taxes-form-year-option" useless
-                    >
+                    <SelectItem key={item.year} value={item.year} disabled={item.disabled}>
                       {item.year}
                     </SelectItem>
                   ))}

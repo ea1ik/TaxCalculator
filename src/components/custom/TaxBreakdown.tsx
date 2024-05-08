@@ -21,7 +21,7 @@ export function TaxBreakdown(props: Props) {
       <div className="flex flex-col mb-6">
         <h2 className="text-sm">Taxes Owed</h2>
         {props.fetching ? (
-          <Skeleton className="w-40 h-12" />
+          <Skeleton className="w-40 h-12" data-testid="tax-breakdown-taxes-skeleton" />
         ) : (
           <p className="text-4xl font-bold" data-testid="tax-breakdown-taxes">
             {formatter.format(props.taxes)}
