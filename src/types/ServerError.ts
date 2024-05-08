@@ -1,13 +1,6 @@
-// {
-//     "errors": [
-//       {
-//         "code": "INTERNAL_SERVER_ERROR",
-//         "field": "",
-//         "message": "Database not found!"
-//       }
-//     ]
-//   }
-
+/**
+ * Represents a server error.
+ */
 export type ServerError = {
   code: string;
   field: string;

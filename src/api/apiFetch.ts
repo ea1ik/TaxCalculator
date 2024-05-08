@@ -4,6 +4,18 @@ import { ServerError } from "../types/ServerError";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const base = "http://localhost:5001";
 
+/**
+ * Makes an API request and returns the response data.
+ *
+ * @template T - The type of the response data.
+ * @param {Object} options - The options for the API request.
+ * @param {string} options.path - The path of the API endpoint.
+ * @param {string} options.method - The HTTP method for the request.
+ * @param {Record<string, any>} [options.body] - The request body.
+ * @param {Record<string, any>} [options.queryParams] - The query parameters for the request.
+ * @returns {Promise<T>} - A promise that resolves to the response data.
+ * @throws {APIError} - If the API response contains errors.
+ */
 export default async function apiFetch<T>({
   path,
   method,

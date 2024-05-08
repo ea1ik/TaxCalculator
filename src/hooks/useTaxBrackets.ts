@@ -3,6 +3,12 @@ import { TaxBracket } from "../types/TaxBracket";
 import getBracketsByYear from "../api/getBracketsByYear";
 import { APIError } from "../classes/APIError";
 
+/**
+ * Custom hook to fetch tax brackets based on the specified year.
+ *
+ * @param year - The year for which to fetch the tax brackets.
+ * @returns An object containing the fetched tax brackets, error, and loading state.
+ */
 const useTaxBrackets = (year: string | null) => {
   const {
     data: taxBrackets,
